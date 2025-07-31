@@ -1,4 +1,4 @@
-# 🚀 ChainWatc[📚 Documentation](./docs) • [🐛 Report Bug](https://github.com/harshendram/ChainWatch---Blockchain-powered-monitoring/issues) • [💡 Request Feature](https://github.com/harshendram/ChainWatch---Blockchain-powered-monitoring/issues)
+# 🚀 ChainWatch [📚 Documentation](./docs) • [🐛 Report Bug](https://github.com/harshendram/ChainWatch---Blockchain-powered-monitoring/issues) • [💡 Request Feature](https://github.com/harshendram/ChainWatch---Blockchain-powered-monitoring/issues)
 
 <div align="center">
 

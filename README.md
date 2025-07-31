@@ -55,9 +55,12 @@ All monitoring data is **cryptographically verified** and stored on-chain, provi
 ![Landing Page](./screenshots/website-demo.png)
 *Beautiful, responsive landing page with dark/light mode support*
 
-### 📊 Dashboard & Architecture
-![Dashboard](./screenshots/architecture.png)
-*Comprehensive monitoring dashboard with real-time metrics*
+### 🏗️ Architecture Overview
+
+| **Core Components** | **Network Topology** | **Data Flow** |
+|:---:|:---:|:---:|
+| ![Architecture](./screenshots/architecture.png) | ![Architecture v1.0](./screenshots/architecture1.0.png) | ![Architecture v2.0](./screenshots/architecture2.0.png) |
+| *System Architecture - Core Components* | *Network Topology - Validator Distribution* | *Data Flow - Monitoring Pipeline* |
 
 ### 🚨 Twitter/X Monitoring Challenge
 ![Twitter Down Issue](./screenshots/whyitshowstwitterdown.png)

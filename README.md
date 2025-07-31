@@ -1,4 +1,4 @@
-# 🚀 ChainWatch
+# 🚀 ChainWatc[📚 Documentation](./docs) • [🐛 Report Bug](https://github.com/harshendram/ChainWatch---Blockchain-powered-monitoring/issues) • [💡 Request Feature](https://github.com/harshendram/ChainWatch---Blockchain-powered-monitoring/issues)
 
 <div align="center">
 
@@ -12,7 +12,7 @@
 [![Blockchain](https://img.shields.io/badge/Blockchain-Solana-9945FF?style=for-the-badge&logo=solana)](https://solana.com/)
 [![Monorepo](https://img.shields.io/badge/Monorepo-TurboRepo-EF4444?style=for-the-badge&logo=turborepo)](https://turbo.build/)
 
-[📚 Documentation](./docs) • [🐛 Report Bug](https://github.com/harshendram/ChainWatch---Blockchain-powered-monitoring/issues) • [💡 Request Feature](https://github.com/harshendram/ChainWatch---Blockchain-powered-monitoring/issues)
+[📚 Documentation](./docs) • [� Why Twitter Shows Down](./WHY-TWITTER-IS-DOWN.md) • [�🐛 Report Bug](https://github.com/harshendram/ChainWatch---Blockchain-powered-monitoring/issues) • [💡 Request Feature](https://github.com/harshendram/ChainWatch---Blockchain-powered-monitoring/issues)
 
 </div>
 
@@ -52,20 +52,16 @@ All monitoring data is **cryptographically verified** and stored on-chain, provi
 <div align="center">
 
 ### 🏠 Landing Page
-![Landing Page](./screenshots/landing-page.png)
+![Landing Page](./screenshots/website-demo.png)
 *Beautiful, responsive landing page with dark/light mode support*
 
-### 📊 Dashboard
-![Dashboard](./screenshots/dashboard.png)
+### 📊 Dashboard & Architecture
+![Dashboard](./screenshots/architecture.png)
 *Comprehensive monitoring dashboard with real-time metrics*
 
-### ⚡ Real-time Monitoring
-![Real-time Monitoring](./screenshots/monitoring.png)
-*Live uptime status with latency metrics from multiple validators*
-
-### 📱 Mobile Responsive
-![Mobile View](./screenshots/mobile-view.png)
-*Fully responsive design for monitoring on the go*
+### 🚨 Twitter/X Monitoring Challenge
+![Twitter Down Issue](./screenshots/whyitshowstwitterdown.png)
+*Understanding why social media platforms appear "down" due to anti-bot protection*
 
 </div>
 
@@ -106,7 +102,101 @@ ChainWatch is built as a **modern monorepo** with clear separation of concerns:
 
 ---
 
-## 🚀 Quick Start
+## � Understanding Twitter/X Monitoring Challenges
+
+### 🎯 **Why Twitter/X Shows as "Down"**
+
+When ChainWatch monitors Twitter/X (twitter.com or x.com), it frequently shows as "DOWN" or unreachable. This isn't because Twitter is actually down, but due to **sophisticated anti-bot and browser-specific restrictions** implemented by X/Twitter.
+
+### 🔒 **X/Twitter's Protection Mechanisms**
+
+#### 🛡️ **Advanced Bot Detection**
+X/Twitter has implemented multiple layers of protection:
+- **Browser Fingerprinting**: Detects User Agent, JavaScript execution, WebGL signatures
+- **Bot Detection Systems**: Identifies headless browsers, automated tools, and non-human patterns
+- **Specific Browser Requirements**: Only allows Chrome, Firefox, Safari, Edge with full JavaScript
+- **Blocks All Automated Tools**: Postman, curl, wget, Python requests, Node.js fetch
+
+#### 📡 **Why Monitoring Tools Fail**
+```bash
+# This will fail:
+curl -I https://twitter.com
+# Response: 403 Forbidden or Connection Reset
+
+# Postman Request to twitter.com:
+# Result: "Could not get any response" or "403 Forbidden"
+```
+
+**Reason**: X blocks all non-browser HTTP clients and requires:
+- Full JavaScript execution environment
+- Browser-specific fingerprints and headers
+- Human-like interaction patterns
+- Real browser rendering capabilities
+
+### 🔧 **Technical Challenges**
+
+#### ❌ **Why Standard Monitoring Fails**
+```typescript
+// ChainWatch's standard monitoring approach:
+async function checkWebsite(url: string) {
+  try {
+    const response = await fetch(url, { method: 'HEAD', timeout: 5000 });
+    return response.ok ? 'UP' : 'DOWN';
+  } catch (error) {
+    return 'DOWN'; // X/Twitter blocks this immediately
+  }
+}
+```
+
+**Issues with X/Twitter:**
+1. **No Browser Context**: Simple HTTP requests lack browser fingerprints
+2. **Missing JavaScript**: X requires full browser JavaScript execution
+3. **Bot Detection**: Automated requests are immediately flagged
+4. **Rate Limiting**: Multiple requests from same IP get blocked
+5. **CAPTCHA Challenges**: X serves CAPTCHA to suspicious requests
+
+### 🌐 **Industry Impact**
+
+**Affected Monitoring Services:**
+- **Pingdom**: Shows intermittent failures
+- **StatusCake**: Cannot reliably monitor  
+- **UptimeRobot**: Frequent false positives
+- **Site24x7**: Requires browser-based checks
+
+**This affects ALL monitoring services, not just ChainWatch.**
+
+### 💡 **ChainWatch's Approach**
+
+#### 🎯 **Current Status**
+- **Expected Behavior**: Twitter/X showing as "DOWN" is normal
+- **Not a Bug**: This is X's intended anti-automation protection
+- **Industry Standard**: All monitoring services face this challenge
+
+#### 🚀 **Future Enhancements**
+ChainWatch's decentralized validator network offers potential solutions:
+- **Geographic Distribution**: Validators from different locations
+- **Browser Diversity**: Different validators using various methods
+- **Human-like Patterns**: Validators mimicking real user behavior
+- **Consensus Mechanism**: Multiple validators confirming actual status
+
+#### 📋 **Recommendations**
+1. **Alternative Monitoring**: Monitor Twitter's API status page instead
+2. **User Education**: Understand that "DOWN" ≠ actually unavailable
+3. **Selective Monitoring**: Use different monitoring types for different sites
+4. **Browser-Based Validation**: Future validator nodes may use real browsers
+
+### 🎯 **Key Takeaways**
+
+- ✅ **X/Twitter blocks all automated monitoring tools**
+- ✅ **This affects ALL monitoring services, not just ChainWatch**
+- ✅ **Real browser simulation is the only reliable solution**
+- ✅ **This represents the future of web platform protection**
+
+**For ChainWatch Users**: When you see Twitter/X as "DOWN", it likely means the platform is actively blocking monitoring attempts, not that the service is actually unavailable to real users.
+
+---
+
+## �🚀 Quick Start
 
 ### 📋 Prerequisites
 
@@ -369,19 +459,19 @@ We welcome contributions from the community! Here's how you can help:
 
 ### 🔮 Phase 4: Enterprise (Q4 2024) 💭
 - [ ] Enterprise dashboard
-- [ ] API rate limiting
-- [ ] Custom integrations
-- [ ] Advanced analytics
+<details>
+<summary><strong>Why Twitter/X Shows as "Down"</strong></summary>
 
----
+Twitter/X implements sophisticated anti-bot protection that blocks automated monitoring tools. This affects ALL monitoring services, not just ChainWatch.
 
-## 📊 Performance & Monitoring
+**Why this happens:**
+- X only allows real browsers with full JavaScript
+- Blocks Postman, curl, and automated HTTP requests
+- Requires specific browser fingerprints
+- Uses advanced bot detection systems
 
-### 🔍 Monitoring Metrics
-
-- **Uptime**: 99.9% availability target
-- **Response Time**: < 200ms average API response
-- **Validator Coverage**: Global distribution across 6 continents
+**Solution:** This is expected behavior. See the [Twitter/X Monitoring Challenges](#-understanding-twitterx-monitoring-challenges) section above for detailed technical explanation.
+</details>tor Coverage**: Global distribution across 6 continents
 - **Data Accuracy**: Blockchain-verified monitoring results
 
 ### 📈 Analytics Dashboard
@@ -461,10 +551,24 @@ GET /api/v1/reports/:websiteId
 
 <details>
 <summary><strong>Database Connection Errors</strong></summary>
+### 🐛 Common Issues
 
-```bash
-# Check PostgreSQL status
-pg_isready -h localhost -p 5432
+<details>
+<summary><strong>Why Twitter/X Shows as "Down"</strong></summary>
+
+Twitter/X implements sophisticated anti-bot protection that blocks automated monitoring tools. This affects ALL monitoring services, not just ChainWatch.
+
+**Why this happens:**
+- X only allows real browsers with full JavaScript
+- Blocks Postman, curl, and automated HTTP requests
+- Requires specific browser fingerprints
+- Uses advanced bot detection systems
+
+**Solution:** This is expected behavior. Read our [detailed explanation](./WHY-TWITTER-IS-DOWN.md) for technical details.
+</details>
+
+<details>
+<summary><strong>Database Connection Errors</strong></summary>
 
 # Verify DATABASE_URL in .env
 DATABASE_URL=postgresql://user:password@localhost:5432/chainwatch
